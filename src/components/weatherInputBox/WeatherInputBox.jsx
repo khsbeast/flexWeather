@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useFetchCountries from "../../hooks/useFetchCountries";
 import useFetchWeather from "../../hooks/useFetchWeather";
+import InputBox from "./inputBox/inputBox";
 
 const WeatherInputBox = () => {
   const [query, setQuery] = useState("");
@@ -26,27 +27,14 @@ const WeatherInputBox = () => {
   return (
     <div>
       {" "}
-      <input
-        type="text"
-        onChange={searchCities}
-        onFocus={() => setShowDropDown(true)}
-        // onBlur={() => setShowDropDown(false)}
-        value={query}
+      <InputBox
+        searchCities={searchCities}
+        query={query}
+        setShowDropDown={setShowDropDown}
+        showDropDown={showDropDown}
+        handleCitySubmit={handleCitySubmit}
+        citiesData={citiesData}
       />
-      <div onClick={handleCitySubmit}>
-        {showDropDown &&
-          citiesData.map((data, index) => (
-            <div
-              key={index}
-              data-latitude={data.latitude}
-              data-longitude={data.longitude}
-              data-value={data.city + ", " + data.country}
-            >
-              {" "}
-              {data.city}, {data.country}{" "}
-            </div>
-          ))}
-      </div>
     </div>
   );
 };

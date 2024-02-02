@@ -1,10 +1,12 @@
-import "./App.css";
-import WeatherInputBox from "./components/weatherInputBox/WeatherInputBox";
+import styles from "./App.module.scss";
+import NavBar from "./components/navbar/navBar";
 function App() {
   return (
     <>
-      <h1>Flexi Weather Start</h1>
-      <WeatherInputBox />
+      <NavBar />
+      <div className={styles.container}>
+        <h1>Flexi Weather Start</h1>
+      </div>
     </>
   );
 }

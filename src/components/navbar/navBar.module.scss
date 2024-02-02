@@ -1,0 +1,10 @@
+.header {
+  padding: 1rem 0;  
+  background-color: #181a23;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+}
