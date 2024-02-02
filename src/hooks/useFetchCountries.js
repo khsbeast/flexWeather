@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { debounce } from "lodash";
 
 const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
 const API_KEY = "e95240c42dmsh80181460e221699p1ec974jsn9c6f5fed78e4";
@@ -26,15 +27,23 @@ const fetchCities = async (query) => {
 
 const useFetchCountries = () => {
   const [citiesData, setCitiesData] = useState([]);
+  const debouncedSearch = useCallback(
+    debounce(
+      (query) =>
+        fetchCities(query).then((data) =>
+          setCitiesData(
+            data.data.map((res) => {
+              return { city: res.city, country: res.country };
+            })
+          )
+        ),
+      300
+    ),
+    []
+  );
 
   const handleSearch = (query) => {
-    fetchCities(query).then((data) =>
-      setCitiesData(
-        data.data.map((res) => {
-          return { city: res.city, country: res.country };
-        })
-      )
-    );
+    debouncedSearch(query);
   };
 
   return { citiesData, handleSearch };

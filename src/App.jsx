@@ -1,6 +1,5 @@
 import "./App.css";
 import WeatherInputBox from "./components/weatherInputBox/WeatherInputBox";
-
 function App() {
   return (
     <>
