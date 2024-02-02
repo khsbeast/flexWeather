@@ -16,14 +16,8 @@
     color: white;
     font-size: 1.1rem;
     width: 300px;
-    &:active,
-    &:focus {
-      width: 500px;
-      transition: width 0.3s ease;
-    }
   }
   .dropDown {
-    padding: 1rem;
     position: absolute;
     top: 110%;
     left: 0;
@@ -34,4 +28,8 @@
 }
 .boxActive {
   border: 2px solid #1977f2;
+  input {
+    width: 500px;
+    transition: width 0.3s ease;
+  }
 }

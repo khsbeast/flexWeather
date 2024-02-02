@@ -13,6 +13,7 @@ const InputBox = ({
 }) => {
   return (
     <div
+      onBlur={() => setShowDropDown(false)}
       className={classNames({
         [styles.inputBox]: true,
         [styles.boxActive]: showDropDown,
@@ -25,7 +26,6 @@ const InputBox = ({
         placeholder="Search for a city..."
         onChange={searchCities}
         onFocus={() => setShowDropDown(true)}
-        // onBlur={() => setShowDropDown(false)}
         value={query}
       />
       <DropDown

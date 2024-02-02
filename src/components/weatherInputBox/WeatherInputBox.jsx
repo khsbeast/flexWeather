@@ -16,11 +16,15 @@ const WeatherInputBox = () => {
   };
 
   const handleCitySubmit = (e) => {
-    setQuery(e.target.getAttribute("data-value"));
+    let element = e.target;
+    if (element.tagName !== "DIV") {
+      element = element.closest("div");
+    }
+    setQuery(element.getAttribute("data-value"));
     setShowDropDown(false);
     handleSubmit(
-      e.target.getAttribute("data-latitude"),
-      e.target.getAttribute("data-longitude")
+      element.getAttribute("data-latitude"),
+      element.getAttribute("data-longitude")
     );
   };
 

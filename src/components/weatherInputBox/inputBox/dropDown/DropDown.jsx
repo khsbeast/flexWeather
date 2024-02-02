@@ -3,9 +3,9 @@ import ListItem from "./ListItem";
 
 const DropDown = ({ handleCitySubmit, showDropDown, citiesData }) => {
   return (
-    <div onClick={handleCitySubmit} className={showDropDown && styles.dropDown}>
+    <div onMouseDown={handleCitySubmit} className={showDropDown && styles.dropDown}>
       {showDropDown &&
-        citiesData.map((data, index) => <ListItem key={index} data={data} />)}
+        citiesData.map((data, index) => <ListItem key={index} index={index} data={data} />)}
     </div>
   );
 };

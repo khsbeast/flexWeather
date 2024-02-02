@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const API = "https://api.openweathermap.org/data/2.5";
-const KEY = "b33e10b4535b595a5555a6821c97ab35";
+const KEY = "b33e10b4535b595a5555a6821c97ab35HARSH";
 
 const fetchData = async (lat, lon) => {
   try {
