@@ -27,17 +27,23 @@ const fetchCities = async (query) => {
 
 const useFetchCountries = () => {
   const [citiesData, setCitiesData] = useState([]);
+  
   const debouncedSearch = useCallback(
     debounce(
       (query) =>
         fetchCities(query).then((data) =>
           setCitiesData(
             data.data.map((res) => {
-              return { city: res.city, country: res.country };
+              return {
+                city: res.city,
+                country: res.country,
+                latitude: res.latitude,
+                longitude: res.longitude,
+              };
             })
           )
         ),
-      300
+      400
     ),
     []
   );
