@@ -1,13 +1,11 @@
 import { useState } from "react";
 import useFetchCountries from "../../hooks/useFetchCountries";
-import useFetchWeather from "../../hooks/useFetchWeather";
 import InputBox from "./inputBox/inputBox";
 
-const WeatherInputBox = () => {
+const WeatherInputBox = ({ handleSubmit }) => {
   const [query, setQuery] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   const { citiesData, handleSearch } = useFetchCountries();
-  const { weatherData, forecastData, handleSubmit } = useFetchWeather();
 
   const searchCities = (e) => {
     const cityQuery = e.target.value;

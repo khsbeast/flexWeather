@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const API = "https://api.openweathermap.org/data/2.5";
-const KEY = "b33e10b4535b595a5555a6821c97ab35HARSH";
+const KEY = "b33e10b4535b595a5555a6821c97ab35";
 
 const fetchData = async (lat, lon) => {
   try {
@@ -19,18 +19,17 @@ const fetchData = async (lat, lon) => {
 
     const weatherData = await weather.json();
     const forecastData = await forecast.json();
-
-    return [weatherData, forecastData];
+    return { weatherData, forecastData };
   } catch (err) {
     console.log(err);
   }
 };
 const useFetchWeather = () => {
-  const [weatherData, setWeatherData] = useState();
-  const [forecastData, setForecastData] = useState();
+  const [weatherData, setWeatherData] = useState({});
+  const [forecastData, setForecastData] = useState({});
 
-  const handleSubmit = (lat, lon) => {
-    const [weatherData, forecastData] = fetchData(lat, lon);
+  const handleSubmit = async (lat, lon) => {
+    const { weatherData, forecastData } = await fetchData(lat, lon);
     setForecastData(forecastData);
     setWeatherData(weatherData);
   };
