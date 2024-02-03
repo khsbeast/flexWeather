@@ -28,24 +28,11 @@
       font-weight: 400;
     }
   }
-  @keyframes moveLeftRight {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(50px); /* Adjust the distance you want to move */
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
   .icon {
+    text-align: center;
     h3 {
       margin: 0;
       font-size: 2rem;
-    }
-    img {
-      animation: moveLeftRight 20s infinite;
     }
   }
   .info {

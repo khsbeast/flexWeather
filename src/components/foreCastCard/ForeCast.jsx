@@ -3,8 +3,11 @@ import InfoBox from "../infoBox/InfoBox";
 import Sunrise from "../../assets/vitals/sunrise.svg";
 import ForeCastIcon from "../../assets/forecast.png";
 import styles from "./foreCast.module.scss";
+import { formatForecastData } from "../../utils/utils";
 
-const ForeCast = () => {
+const ForeCast = ({ forecastData }) => {
+  const data = formatForecastData(forecastData);
+  console.log(data);
   return (
     <Card>
       <div className={styles.header}>

@@ -15,7 +15,7 @@ const GEO_API_OPTIONS = {
 const fetchCities = async (query) => {
   try {
     const res = await fetch(
-      `${GEO_API_URL}/cities?minPopulation=10000&namePrefix=${query}`,
+      `${GEO_API_URL}/cities?minPopulation=10000&namePrefix=${query}&units=metric`,
       GEO_API_OPTIONS
     );
     return await res.json();
@@ -27,7 +27,7 @@ const fetchCities = async (query) => {
 
 const useFetchCountries = () => {
   const [citiesData, setCitiesData] = useState([]);
-  
+
   const debouncedSearch = useCallback(
     debounce(
       (query) =>
