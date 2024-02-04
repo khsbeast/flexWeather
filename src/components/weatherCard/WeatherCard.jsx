@@ -5,6 +5,7 @@ import InfoBox from "../infoBox/InfoBox";
 import Card from "../card/card";
 import { formatWeatherData } from "../../utils/utils";
 import { vitalsData } from "./data";
+import { weatherIcons } from "./data";
 
 const WeatherCard = ({ weatherData }) => {
   const data = formatWeatherData(weatherData);
@@ -28,7 +29,7 @@ const WeatherCard = ({ weatherData }) => {
           </div>
           <div className={styles.icon}>
             <img
-              src={`/src/assets/weatherIcons/${data.icon}.svg`}
+              src={weatherIcons[data.icon]}
               alt="cloud"
               width="110px"
               height="110px"
