@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const API = "https://api.openweathermap.org/data/2.5";
 const KEY = "b33e10b4535b595a5555a6821c97ab35";
@@ -27,6 +27,16 @@ const fetchData = async (lat, lon) => {
 const useFetchWeather = () => {
   const [weatherData, setWeatherData] = useState({});
   const [forecastData, setForecastData] = useState({});
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position);
+      });
+    } else {
+      console.log("Geolocation is not available in your browser.");
+    }
+  }, []);
 
   const handleSubmit = async (lat, lon) => {
     const { weatherData, forecastData } = await fetchData(lat, lon);

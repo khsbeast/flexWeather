@@ -15,7 +15,7 @@ const ForeCast = ({ forecastData }) => {
           <img src={ForeCastIcon} alt="search" width="32px" height="32px" />
           <div>Forecast</div>
         </div>
-        <div style={{ display: "flex", padding: "1rem" }}>
+        <div className={styles.foreCastList}>
           {data.map((item, index) => {
             return (
               <InfoBox
