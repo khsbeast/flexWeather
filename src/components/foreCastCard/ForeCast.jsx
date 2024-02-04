@@ -6,7 +6,7 @@ import { formatForecastData } from "../../utils/utils";
 
 const ForeCast = ({ forecastData }) => {
   const data = formatForecastData(forecastData);
-  console.log(data);
+
   return (
     <div className={styles.foreCastWrapper}>
       <Card>

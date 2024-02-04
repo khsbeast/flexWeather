@@ -43,7 +43,7 @@ const useFetchCountries = () => {
             })
           )
         ),
-      400
+      500
     ),
     []
   );

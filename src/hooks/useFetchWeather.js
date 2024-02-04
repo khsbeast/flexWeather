@@ -1,4 +1,3 @@
-import { set } from "lodash";
 import { useEffect, useState } from "react";
 
 const API = "https://api.openweathermap.org/data/2.5";
@@ -28,7 +27,8 @@ const fetchData = async (lat, lon) => {
 const useFetchWeather = () => {
   const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState({});
-  const [forecastData, setForecastData] = useState({});
+  const [forecastData, setForecastData] = useState(null);
+  const [firstLoad, setFirstLoading] = useState(true);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -41,7 +41,8 @@ const useFetchWeather = () => {
         setForecastData(forecastData);
         setWeatherData(weatherData);
         setLoading(false);
-      });
+        setFirstLoading(false);
+      })
     } else {
       console.log("Geolocation is not available in your browser.");
     }
@@ -53,9 +54,9 @@ const useFetchWeather = () => {
     setForecastData(forecastData);
     setWeatherData(weatherData);
     setLoading(false);
+    setFirstLoading(false);
   };
-
-  return { weatherData, forecastData, handleSubmit, loading };
+  return { weatherData, forecastData, handleSubmit, loading, firstLoad };
 };
 
 export default useFetchWeather;
