@@ -3,6 +3,7 @@ import InfoBox from "../infoBox/InfoBox";
 import ForeCastIcon from "../../assets/forecast.png";
 import styles from "./foreCast.module.scss";
 import { formatForecastData } from "../../utils/utils";
+import { weatherIcons } from "../weatherCard/data";
 
 const ForeCast = ({ forecastData }) => {
   const data = formatForecastData(forecastData);
@@ -20,7 +21,7 @@ const ForeCast = ({ forecastData }) => {
               <InfoBox
                 key={index}
                 header={item.day}
-                Icon={`/src/assets/weatherIcons/${item.icon}.svg`}
+                Icon={weatherIcons[item.icon]}
                 footer={`${item.temp}° C`}
                 description={item.weather}
                 border={index !== data.length - 1}
