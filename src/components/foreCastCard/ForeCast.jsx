@@ -5,6 +5,7 @@ import styles from "./foreCast.module.scss";
 import { formatForecastData } from "../../utils/utils";
 
 const ForeCast = ({ forecastData }) => {
+  
   const data = formatForecastData(forecastData);
 
   return (
@@ -23,7 +24,7 @@ const ForeCast = ({ forecastData }) => {
                 Icon={`/src/assets/weatherIcons/${item.icon}.svg`}
                 footer={`${item.temp}° C`}
                 description={item.weather}
-                border={index !== data.length - 1 ? true : false}
+                border={index !== data.length - 1}
               />
             );
           })}

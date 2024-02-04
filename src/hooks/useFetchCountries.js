@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { debounce } from "lodash";
+import { showErrorMessage } from "../utils/utils";
 
 const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
 const API_KEY = "e95240c42dmsh80181460e221699p1ec974jsn9c6f5fed78e4";
@@ -20,8 +21,8 @@ const fetchCities = async (query) => {
     );
     return await res.json();
   } catch (err) {
-    console.log(err);
-    return;
+    showErrorMessage("Failed to fetch city data. Please try again.");
+    throw new Error(err);
   }
 };
 
@@ -49,10 +50,11 @@ const useFetchCountries = () => {
   );
 
   const handleSearch = (query) => {
+    if(query.length > 1)
     debouncedSearch(query);
   };
 
-  return { citiesData, handleSearch };
+  return { citiesData, setCitiesData ,handleSearch };
 };
 
 export default useFetchCountries;

@@ -2,6 +2,7 @@ import styles from "./inputBox.module.scss";
 import searchIcon from "../../../assets/search.svg";
 import classNames from "classnames";
 import DropDown from "./dropDown/DropDown";
+import { set } from "lodash";
 
 const InputBox = ({
   searchCities,
@@ -10,7 +11,14 @@ const InputBox = ({
   showDropDown,
   handleCitySubmit,
   citiesData,
+  setCitiesData,
 }) => {
+  const handleFocus = (e) => {
+    setShowDropDown(true);
+    if (e.target.value === "")
+      setCitiesData(JSON.parse(localStorage.getItem("search")) || []);
+  };
+
   return (
     <div
       onBlur={() => setShowDropDown(false)}
@@ -25,7 +33,7 @@ const InputBox = ({
         type="text"
         placeholder="Search for a city..."
         onChange={searchCities}
-        onFocus={() => setShowDropDown(true)}
+        onFocus={handleFocus}
         value={query}
       />
       <DropDown

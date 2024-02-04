@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { showErrorMessage } from "../utils/utils";
 
 const API = "https://api.openweathermap.org/data/2.5";
 const KEY = "b33e10b4535b595a5555a6821c97ab35";
@@ -21,7 +22,7 @@ const fetchData = async (lat, lon) => {
     const forecastData = await forecast.json();
     return { weatherData, forecastData };
   } catch (err) {
-    console.log(err);
+    showErrorMessage("Failed to fetch weather data. Please try again.");
   }
 };
 const useFetchWeather = () => {
@@ -43,8 +44,6 @@ const useFetchWeather = () => {
         setLoading(false);
         setFirstLoading(false);
       })
-    } else {
-      console.log("Geolocation is not available in your browser.");
     }
   }, []);
 

@@ -1,4 +1,7 @@
 import { isArray } from "lodash";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const dateConvertor = (UNIX_timestamp) => {
   const timeStamp = new Date(UNIX_timestamp * 1000);
@@ -79,7 +82,6 @@ export const formatWeatherData = (data) => {
 export const formatForecastData = (data) => {
   let forecastData = [];
   if (isArray(data.list)) {
-    console.log(data.list);
     data.list.forEach((data) => {
       const foreData = {
         day: getDay(data.dt).day,
@@ -93,4 +95,16 @@ export const formatForecastData = (data) => {
     });
   }
   return forecastData;
+};
+
+export const showErrorMessage = (error) => {
+  toast.error(error, {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 };
