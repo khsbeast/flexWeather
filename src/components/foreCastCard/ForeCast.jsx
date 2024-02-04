@@ -1,6 +1,5 @@
 import Card from "../card/card";
 import InfoBox from "../infoBox/InfoBox";
-import Sunrise from "../../assets/vitals/sunrise.svg";
 import ForeCastIcon from "../../assets/forecast.png";
 import styles from "./foreCast.module.scss";
 import { formatForecastData } from "../../utils/utils";

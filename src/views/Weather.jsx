@@ -5,15 +5,20 @@ import useFetchWeather from "../hooks/useFetchWeather";
 import styles from "./weather.module.scss";
 
 const Weather = () => {
-  const { weatherData, forecastData, handleSubmit } = useFetchWeather();
+  const { weatherData, forecastData, handleSubmit, loading } =
+    useFetchWeather();
 
   return (
     <>
       <NavBar handleSubmit={handleSubmit} />
-      <div className={styles.container}>
-        <WeatherCard weatherData={weatherData} />
-        <ForeCast forecastData={forecastData}/>
-      </div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className={styles.container}>
+          <WeatherCard weatherData={weatherData} />
+          <ForeCast forecastData={forecastData} />
+        </div>
+      )}
     </>
   );
 };
