@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useFetchCountries from "../../hooks/useFetchCountries";
 import InputBox from "./inputBox/inputBox";
+import { addToLocalStorage } from "../../utils/utils";
 
 const WeatherInputBox = ({ handleSubmit }) => {
   const [query, setQuery] = useState("");
@@ -20,23 +21,17 @@ const WeatherInputBox = ({ handleSubmit }) => {
     const country = element.getAttribute("data-country");
     const latitude = element.getAttribute("data-latitude");
     const longitude = element.getAttribute("data-longitude");
+
+    // Event delegation to get the div element instead of attaching event listner to all child its better to add to parent
+
     if (element.tagName !== "DIV") {
       element = element.closest("div");
     }
     setQuery(city + ", " + country);
     setShowDropDown(false);
     handleSubmit(latitude, longitude);
-    const dataObj = {
-      latitude: latitude,
-      longitude: longitude,
-      city: city,
-      country: country,
-    };
-    
-    const localData = JSON.parse(localStorage.getItem("search")) || [];
-    if (!localData.find((data) => data.city === dataObj.city))
-      localData.unshift(dataObj);
-    localStorage.setItem("search", JSON.stringify([...localData].slice(0, 5)));
+
+    addToLocalStorage({ latitude, longitude, city, country });
   };
 
   return (

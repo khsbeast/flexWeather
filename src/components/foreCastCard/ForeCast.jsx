@@ -5,7 +5,6 @@ import styles from "./foreCast.module.scss";
 import { formatForecastData } from "../../utils/utils";
 
 const ForeCast = ({ forecastData }) => {
-  
   const data = formatForecastData(forecastData);
 
   return (

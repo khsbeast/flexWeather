@@ -2,7 +2,6 @@ import styles from "./inputBox.module.scss";
 import searchIcon from "../../../assets/search.svg";
 import classNames from "classnames";
 import DropDown from "./dropDown/DropDown";
-import { set } from "lodash";
 
 const InputBox = ({
   searchCities,
@@ -15,6 +14,8 @@ const InputBox = ({
 }) => {
   const handleFocus = (e) => {
     setShowDropDown(true);
+
+    // if the input box is empty, show the last searched cities
     if (e.target.value === "")
       setCitiesData(JSON.parse(localStorage.getItem("search")) || []);
   };

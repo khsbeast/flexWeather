@@ -50,11 +50,10 @@ const useFetchCountries = () => {
   );
 
   const handleSearch = (query) => {
-    if(query.length > 1)
-    debouncedSearch(query);
+    if (query.length > 1) debouncedSearch(query);
   };
 
-  return { citiesData, setCitiesData ,handleSearch };
+  return { citiesData, setCitiesData, handleSearch };
 };
 
 export default useFetchCountries;

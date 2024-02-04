@@ -1,6 +1,8 @@
+@import "../../utils/vars";
+
 .header {
-  padding: 1rem 0;  
-  background-color: #181a23;
+  padding: 1rem 0;
+  background-color: $bg;
   width: 100%;
   .container {
     display: flex;
@@ -11,19 +13,13 @@
   }
 }
 
-// @media screen and (max-width: 1368px){
-//     .header{
-//         padding: 1rem 2rem;
-//     }
-// }
-
 @media (max-width: 768px) {
   .header {
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      img{
+      img {
         display: none;
       }
     }

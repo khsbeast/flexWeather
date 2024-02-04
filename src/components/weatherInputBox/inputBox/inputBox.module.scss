@@ -1,7 +1,8 @@
+@import "../../../utils/vars";
 .inputBox {
   border-radius: 40px;
   position: relative;
-  background-color: #303139;
+  background-color: $menu-hover;
   padding: 1rem;
   display: flex;
   border: 2px solid transparent;
@@ -16,7 +17,7 @@
     font-size: 1.1rem;
     width: 300px;
   }
-  img{
+  img {
     padding-top: 2px;
   }
   .dropDown {
@@ -24,12 +25,12 @@
     top: 110%;
     left: 0;
     right: 0;
-    background-color: #181a23;
+    background-color: $card-bg;
     color: white;
   }
 }
 .boxActive {
-  border: 2px solid #1977f2;
+  border: 2px solid $search-active;
   input {
     width: 500px;
     transition: width 0.5s ease;

@@ -1,7 +1,6 @@
 import { isArray } from "lodash";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 const dateConvertor = (UNIX_timestamp) => {
   const timeStamp = new Date(UNIX_timestamp * 1000);
@@ -107,4 +106,11 @@ export const showErrorMessage = (error) => {
     draggable: true,
     progress: undefined,
   });
+};
+
+export const addToLocalStorage = (data) => {
+  const localData = JSON.parse(localStorage.getItem("search")) || [];
+  if (!localData.find((data) => data.city === data.city))
+    localData.unshift(data);
+  localStorage.setItem("search", JSON.stringify([...localData].slice(0, 5)));
 };

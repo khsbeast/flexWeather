@@ -1,15 +1,10 @@
 import styles from "./WeatherCard.module.scss";
 import location from "../../assets/pin.png";
-import Cloud from "../../assets/weatherIcons/sunandcloud.svg";
 import Temperature from "../../assets/temperature.png";
-import Sunrise from "../../assets/vitals/sunrise.svg";
-import Humidity from "../../assets/vitals/humidity.svg";
-import Wind from "../../assets/vitals/wind.svg";
-import Pressure from "../../assets/vitals/pressure-low.svg";
-import Sunset from "../../assets/vitals/sunset.svg";
 import InfoBox from "../infoBox/InfoBox";
 import Card from "../card/card";
 import { formatWeatherData } from "../../utils/utils";
+import { vitalsData } from "./data";
 
 const WeatherCard = ({ weatherData }) => {
   const data = formatWeatherData(weatherData);
@@ -54,31 +49,15 @@ const WeatherCard = ({ weatherData }) => {
           </div>
         </div>
         <div className={styles.endRowWrapper}>
-          <InfoBox
-            header="Sunrise"
-            Icon={Sunrise}
-            footer={data.sunRise}
-            border
-          />
-          <InfoBox
-            header="Humidity"
-            Icon={Humidity}
-            footer={`${data.humidity} mm`}
-            border
-          />
-          <InfoBox
-            header="Wind"
-            Icon={Wind}
-            footer={`${data.wind} mph`}
-            border
-          />
-          <InfoBox
-            header="Pressure"
-            Icon={Pressure}
-            footer={`${data.pressure} mb`}
-            border
-          />
-          <InfoBox header="Sunset" Icon={Sunset} footer={data.sunSet} />
+          {vitalsData.map((item, index) => (
+            <InfoBox
+              key={item.id}
+              header={item.title}
+              Icon={item.icon}
+              footer={data[item.dataKey] + item.unit}
+              border={index !== vitalsData.length - 1}
+            />
+          ))}
         </div>
       </div>
     </Card>

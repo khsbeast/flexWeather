@@ -43,7 +43,7 @@ const useFetchWeather = () => {
         setWeatherData(weatherData);
         setLoading(false);
         setFirstLoading(false);
-      })
+      });
     }
   }, []);
 
