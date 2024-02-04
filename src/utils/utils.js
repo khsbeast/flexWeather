@@ -110,7 +110,7 @@ export const showErrorMessage = (error) => {
 
 export const addToLocalStorage = (data) => {
   const localData = JSON.parse(localStorage.getItem("search")) || [];
-  if (!localData.find((data) => data.city === data.city))
+  if (!localData.find((local) => local.city === data.city))
     localData.unshift(data);
   localStorage.setItem("search", JSON.stringify([...localData].slice(0, 5)));
 };
