@@ -8,13 +8,13 @@ const Weather = () => {
   const { weatherData, forecastData, handleSubmit } = useFetchWeather();
 
   return (
-    <div>
+    <>
       <NavBar handleSubmit={handleSubmit} />
       <div className={styles.container}>
         <WeatherCard weatherData={weatherData} />
         <ForeCast forecastData={forecastData}/>
       </div>
-    </div>
+    </>
   );
 };
 

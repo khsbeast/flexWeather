@@ -14,7 +14,7 @@
     gap: 1rem;
   }
   .midRowWrapper {
-    margin: 4rem 4rem;
+    margin: 2rem 4rem 4rem 4rem;
     display: flex;
     justify-content: space-between;
     .temp {
@@ -45,5 +45,52 @@
     padding-bottom: 1rem;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .location {
+      display: none;
+    }
+    .midRowWrapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      margin: 1rem 2rem 2rem 2rem;
+      .header {
+        order: 2;
+        .temp {
+          order: 2;
+          font-size: 3rem;
+        }
+        .time {
+          order: 1;
+          font-size: 1rem;
+        }
+      }
+      .icon {
+        order: 1;
+        h3 {
+          font-size: 1.5rem;
+        }
+      }
+      .info {
+        order: 3;
+        font-size: 1rem;
+      }
+    }
+    .endRowWrapper {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        width: 90%;
+        overflow: scroll;
+        gap: 1.5rem;
+      }
   }
 }

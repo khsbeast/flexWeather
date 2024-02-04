@@ -1,4 +1,13 @@
 .container{
-    width: 80rem;
+    max-width: 80rem;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        height: 100%;
+        overflow: hidden;
+    }
+    
 }

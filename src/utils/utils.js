@@ -40,7 +40,16 @@ const timeConverter = (UNIX_timestamp) => {
 
 const getDay = (UNIX_timestamp) => {
   const timeStamp = new Date(UNIX_timestamp * 1000);
-  return timeStamp.getDay();
+  const Days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return { day: Days[timeStamp.getUTCDay()], index: timeStamp.getUTCDay() };
 };
 
 export const formatWeatherData = (data) => {
@@ -71,17 +80,17 @@ export const formatForecastData = (data) => {
   let forecastData = [];
   if (isArray(data.list)) {
     console.log(data.list);
-    forecastData = data.list
-      .filter((data, index) => index < 7)
-      .map((data) => {
-        const foreData = {
-          day: getDay(data.dt),
-          weather: data.weather[0].main,
-          icon: data.weather[0].icon,
-          temp: data.main.temp,
-        };
-        return foreData;
-      });
+    data.list.forEach((data) => {
+      const foreData = {
+        day: getDay(data.dt).day,
+        weather: data.weather[0].main,
+        icon: data.weather[0].icon,
+        temp: data.main.temp,
+      };
+      // free api only sends 3 hours data so we need to get the data for everyday
+      if (!forecastData[getDay(data.dt).index])
+        forecastData[getDay(data.dt).index] = foreData;
+    });
   }
   return forecastData;
 };

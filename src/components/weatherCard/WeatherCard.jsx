@@ -24,7 +24,7 @@ const WeatherCard = ({ weatherData }) => {
           </div>
         </div>
         <div className={styles.midRowWrapper}>
-          <div>
+          <div className={styles.header}>
             <div className={styles.temp}> {data.temp}° C</div>
             <div className={styles.time}>
               {" "}

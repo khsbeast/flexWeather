@@ -9,26 +9,28 @@ const ForeCast = ({ forecastData }) => {
   const data = formatForecastData(forecastData);
   console.log(data);
   return (
-    <Card>
-      <div className={styles.header}>
-        <img src={ForeCastIcon} alt="search" width="35px" height="35px" />
-        <div>Forecast</div>
-      </div>
-      <div style={{ display: "flex", paddingBottom: "1rem" }}>
-        <InfoBox
-          header="Monday"
-          Icon={Sunrise}
-          footer="10°C"
-          description="Partly Cloudy"
-          border
-        />
-        <InfoBox header="Monday" Icon={Sunrise} footer="10°C" border />
-        <InfoBox header="Monday" Icon={Sunrise} footer="10°C" border />
-        <InfoBox header="Monday" Icon={Sunrise} footer="10°C" border />
-        <InfoBox header="Monday" Icon={Sunrise} footer="10°C" border />
-        <InfoBox header="Monday" Icon={Sunrise} footer="10°C" border />
-      </div>
-    </Card>
+    <div className={styles.foreCastWrapper}>
+      <Card>
+        <div className={styles.header}>
+          <img src={ForeCastIcon} alt="search" width="32px" height="32px" />
+          <div>Forecast</div>
+        </div>
+        <div style={{ display: "flex", padding: "1rem" }}>
+          {data.map((item, index) => {
+            return (
+              <InfoBox
+                key={index}
+                header={item.day}
+                Icon={`/src/assets/weatherIcons/${item.icon}.svg`}
+                footer={`${item.temp}° C`}
+                description={item.weather}
+                border={index !== data.length - 1 ? true : false}
+              />
+            );
+          })}
+        </div>
+      </Card>
+    </div>
   );
 };
 
